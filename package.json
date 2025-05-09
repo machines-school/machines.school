@@ -1,0 +1,18 @@
+{
+  "name": "machines-school",
+  "version": "1.0.0",
+  "description": "Machines School",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.0",
+    "typescript": "5.8.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0"
+}

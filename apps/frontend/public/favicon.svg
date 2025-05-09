@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g><g transform="matrix(2.5,0,0,2.5,0,0)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400"><svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 199.665C0 50.128 49.845 0.282959 199.382 0.282959C348.918 0.282959 398.764 50.128 398.764 199.665C398.764 349.201 348.918 399.046 199.382 399.046C49.845 399.046 0 349.201 0 199.665Z" fill="#12121D"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M143.629 74H171.944H200.258H228.573H256.888V102.315H285.202V127.798H313.517V156.112V184.427V212.742H285.202V184.427V156.112H256.888V184.427V212.742V241.056V269.371V297.685H285.202V326H256.888H228.573V297.685V269.371V241.056H200.258H171.944V269.371V297.685V326H143.629H115.315V297.685H143.629V269.371V241.056V212.742V184.427V156.112H115.315L115.315 184.427V212.742H87V184.427V156.112V127.798H115.315V99.4831H143.629V74ZM200.258 102.315H228.573V127.798H200.258H171.944V102.315H200.258Z" fill="white"></path>
+</svg></svg></g></g></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g><g transform="matrix(2.5,0,0,2.5,0,0)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400"><svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 199.665C0 50.128 49.845 0.282959 199.382 0.282959C348.918 0.282959 398.764 50.128 398.764 199.665C398.764 349.201 348.918 399.046 199.382 399.046C49.845 399.046 0 349.201 0 199.665Z" fill="white"></path>
+<path d="M256.888 102.314H285.202V127.798H313.518V212.741H285.202V156.112H256.888V297.686H285.202V326H228.573V241.057H171.944V326H115.314V297.686H143.63V156.112H115.314V212.741H87V127.798H115.314V99.4834H143.63V74H256.888V102.314ZM171.944 127.798H228.573V102.314H171.944V127.798Z" fill="#12121D"></path>
+</svg></svg></g></g></svg></g></svg>
