@@ -1,2 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Tiny5&display=swap');
+
 @import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@utility container {
+    padding-inline: 1rem;
+}
+
+@theme {
+    --font-sans: 'Geist', 'sans-serif';
+    --font-tiny5: 'Tiny5', 'sans-serif';
+}
 

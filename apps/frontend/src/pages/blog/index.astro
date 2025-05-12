@@ -1,11 +1,21 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
 ---
 
 <SiteLayout title="Blog">
     <main class="container mx-auto">
         <div class="py-12">
             <h1 class="text-4xl font-bold">Blog</h1>
+            <ul>
+                {posts.map((post) => (
+                    <li>
+                        <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                    </li>
+                ))}
+            </ul>
         </div>
     </main>
 </SiteLayout>

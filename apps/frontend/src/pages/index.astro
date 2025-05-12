@@ -3,12 +3,13 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 ---
 
 <SiteLayout title="Home">
-	<main class="container mx-auto">
-		<div class="py-12">
-			<h1 class="text-4xl font-bold">Machines School</h1>
-			<p>
-				The School of Machines — Teaching machines to think like humans.
-			</p>
-		</div>
-	</main>
+  <main class="container mx-auto pt-8">
+    <div class="mb-6">
+		<h1 class="text-5xl sm:text-7xl font-bold mb-4 sm:mb-2"><span class="font-tiny5">M</span>achines School</h1>
+    <p class="text-xl sm:text-3xl text-gray-500">The School of Machines — Teaching machines to think like humans.</p>
+	</div>
+    <div
+      class="bg-[url('/images/machine-school-bg.webp')] bg-cover bg-center min-h-[320px] md:min-h-[500px] p-4 md:p-12 rounded-xl md:rounded-4xl"
+    />
+  </main>
 </SiteLayout>
