@@ -1,0 +1,72 @@
+---
+interface Props {
+  headings?: { depth: number; slug: string; text: string }[];
+}
+
+const { headings = [] } = Astro.props;
+---
+
+<nav class="hidden lg:block z-10">
+  <h2 class="text-lg font-bold mb-4">Table of Contents</h2>
+  <ul class="space-y-2 text-sm" id="toc">
+    {
+      headings.map((heading) => (
+        <li
+          class={`
+            ${heading.depth === 3 ? "ml-4" : ""}
+            relative pl-3
+          `}
+        >
+          <a
+            href={`#${heading.slug}`}
+            class="block text-gray-600 hover:text-gray-900 transition-colors"
+            data-toc-link
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script>
+  const observer = new IntersectionObserver((sections) => {
+    sections.forEach((section) => {
+      const heading = section.target;
+      const id = heading.getAttribute('id');
+      if (!id) return;
+
+      const link = document.querySelector(`a[href="#${id}"]`);
+      if (!link) return;
+
+      // Calculate the position relative to viewport
+      const rect = heading.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const topPosition = rect.top / viewportHeight;
+
+      // Only highlight if the heading is in the top 13% of the viewport
+      if (topPosition >= 0 && topPosition <= 0.13) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }, {
+    rootMargin: '-13% 0px -87% 0px', // Focus on top 10% of viewport
+    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5] // More precise thresholds
+  });
+
+  // Track all headings that have an `id` applied
+  document.querySelectorAll('h2[id], h3[id]').forEach((heading) => {
+    observer.observe(heading);
+  });
+</script>
+
+<style>
+  .active {
+    color: #111827;
+    font-weight: 600;
+  }
+</style>
+

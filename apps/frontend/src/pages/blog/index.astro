@@ -1,21 +1,31 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-const posts = (await getCollection('blog'))
+const posts = await getCollection("blog");
 ---
 
 <SiteLayout title="Blog">
-    <main class="container mx-auto">
-        <div class="py-12">
-            <h1 class="text-4xl font-bold">Blog</h1>
-            <ul>
-                {posts.map((post) => (
-                    <li>
-                        <a href={`/blog/${post.id}`}>{post.data.title}</a>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    </main>
+  <main class="container mx-auto">
+    <div class="py-12">
+      <h1 class="text-4xl font-bold mb-12">Blog</h1>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {
+          posts.map((post) => (
+            <a href={`/blog/${post.id}`}>
+              <div>
+                <img
+                  src={post.data.featuredImage?.url}
+                  alt={post.data.featuredImage?.alt}
+                  class="w-full h-full object-cover rounded-xl md:rounded-4xl mb-6 hover:scale-105 transition-all duration-300"
+                />
+                <h3 class="text-2xl font-bold">{post.data.title}</h3>
+                <p class="text-lg text-gray-500">{post.data.description}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </main>
 </SiteLayout>

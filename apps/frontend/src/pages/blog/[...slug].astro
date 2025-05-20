@@ -16,8 +16,16 @@ export async function getStaticPaths() {
 
 const post = Astro.props;
 const { Content } = await render(post);
+
+// Extract headings from the content
+const headings = post.body?.match(/^#{2,3}\s+(.+)$/gm)?.map((heading) => {
+  const depth = heading.match(/^#+/)?.[0].length ?? 2;
+  const text = heading.replace(/^#+\s+/, "");
+  const slug = text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "");
+  return { depth, slug, text };
+}) ?? [];
 ---
 
-<BlogPostLayout {...post.data}>
+<BlogPostLayout {...post.data} headings={headings}>
   <Content />
 </BlogPostLayout>

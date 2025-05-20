@@ -1,15 +1,42 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const posts = await getCollection("blog");
 ---
 
 <SiteLayout title="Home">
-  <main class="container mx-auto pt-8">
-    <div class="mb-6">
-		<h1 class="text-5xl sm:text-7xl font-bold mb-4 sm:mb-2"><span class="font-tiny5">M</span>achines School</h1>
-    <p class="text-xl sm:text-3xl text-gray-500">The School of Machines — Teaching machines to think like humans.</p>
-	</div>
+  <main class="container mx-auto py-16">
+    <div class="mb-12">
+      <h1 class="text-5xl sm:text-7xl font-bold mb-4 sm:mb-2">
+        <span class="font-tiny5">M</span>achines School
+      </h1>
+      <p class="text-xl sm:text-3xl text-gray-500">
+        The School of Machines — Teaching machines to think like humans.
+      </p>
+    </div>
     <div
-      class="bg-[url('/images/machine-school-bg.webp')] bg-cover bg-center min-h-[320px] md:min-h-[500px] p-4 md:p-12 rounded-xl md:rounded-4xl"
-    />
+      class="bg-[url('/images/machine-school-bg.webp')] bg-cover bg-center min-h-[320px] md:min-h-[500px] p-4 md:p-12 rounded-xl md:rounded-4xl mb-18"
+    >
+    </div>
+    <h2 class="text-3xl font-bold mb-6">Featured posts</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {
+        posts.map((post) => (
+          <a href={`/blog/${post.id}`}>
+            <div>
+              <img
+                src={post.data.featuredImage?.url}
+                alt={post.data.featuredImage?.alt}
+                class="w-full h-full object-cover rounded-xl md:rounded-4xl mb-6 hover:scale-105 transition-all duration-300"
+              />
+              <h3 class="text-2xl font-bold">{post.data.title}</h3>
+              <p class="text-lg text-gray-500">{post.data.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
   </main>
 </SiteLayout>
