@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import mdx from '@astrojs/mdx';
 import rehypeSlug from 'rehype-slug';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,6 +14,7 @@ export default defineConfig({
         plugins: [tailwindcss()],
     },
     markdown: {
-        rehypePlugins: [rehypeSlug],
+        rehypePlugins: [rehypeSlug, rehypeKatex],
+        remarkPlugins: [remarkMath],
     },
 });

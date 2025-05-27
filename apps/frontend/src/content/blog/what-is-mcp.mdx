@@ -20,13 +20,50 @@ MCP is a protocol for connecting AI models to external tools and services. It al
 
 MCP Server is a server that implements the MCP protocol. It is responsible for receiving requests from the client and sending responses back.
 
+```js
+// Javascript code with syntax highlighting.
+var fun = function lang(l) {
+  dateformat.i18n = require('./lang/' + l);
+  return true;
+};
+```
+
 ### MCP Client
 
 MCP Client is a client that implements the MCP protocol. It is responsible for sending requests to the server and receiving responses back.
 
+```rs
+struct Deck {
+    cards: Vec<String>,
+}
+
+fn main() {
+    let suits = vec!["Hearts", "Spades", "Diamonds"];
+    let values = vec![ "Ace", "2", "3", "4", "5", "6", "7"];
+
+    let mut cards = vec![];
+
+    for suit in suits {
+        for value in values {
+            let card = format!("{} of {}", value, suit);
+            cards.push(card);
+        }
+    }
+
+    let deck = Deck { cards: vec![] };
+
+    println!("Here your deck is: {:?}", deck);
+}
+
+```
+
 ## How does MCP work?
 
-MCP works by defining a set of standard messages that can be sent between AI models and external systems. These messages are sent over a network connection, and they are used to request and receive data from the external system.
+MCP works by defining a set of standard messages  $f(x) = x + 1$ that can be sent between AI models and external systems. These messages are sent over a network connection, and they are used to request and receive data from the external system.
+
+  $$
+  f(x) = x + 1
+  $$
 
 ## How to use MCP?
 
