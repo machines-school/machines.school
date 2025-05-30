@@ -26,6 +26,9 @@ importers:
       astro:
         specifier: ^5.7.12
         version: 5.8.1(@types/node@22.15.27)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.41.1)(typescript@5.8.3)
+      mermaid:
+        specifier: ^11.6.0
+        version: 11.6.0
       rehype-katex:
         specifier: ^7.0.1
         version: 7.0.1
@@ -35,16 +38,10 @@ importers:
       remark-math:
         specifier: ^6.0.0
         version: 6.0.0
-      remark-mermaidjs:
-        specifier: ^7.0.0
-        version: 7.0.0(playwright@1.52.0)
       tailwindcss:
         specifier: ^4.1.5
         version: 4.1.8
     devDependencies:
-      '@playwright/test':
-        specifier: ^1.52.0
-        version: 1.52.0
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@4.1.8)
@@ -275,10 +272,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@fortawesome/fontawesome-free@6.7.2':
-    resolution: {integrity: sha512-JUOtgFW6k9u4Y+xeIaEiLr3+cjoUPiAuLXoyKOJSia6Duzb7pq+A76P9ZdPDoAoxHdHzq6gE9/jKBGXlZT8FbA==}
-    engines: {node: '>=6'}
-
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
@@ -420,11 +413,6 @@ packages:
 
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
-
-  '@playwright/test@1.52.0':
-    resolution: {integrity: sha512-uh6W7sb55hl7D6vsAeA+V2p5JnlAqzhqFyF0VcJkKZXkgnFcVG9PziERRHQfPLfNGx1C292a4JqbWzhR8L4R1g==}
-    engines: {node: '>=18'}
-    hasBin: true
 
   '@rollup/pluginutils@5.1.4':
     resolution: {integrity: sha512-USm05zrsFxYLPdWWq+K3STlWiT/3ELn3RcV5hJMghpeAIhxfsUIg6mt12CBJBInWMV4VneoV7SfGv8xIwo2qNQ==}
@@ -1287,11 +1275,6 @@ packages:
   fontkit@2.0.4:
     resolution: {integrity: sha512-syetQadaUEDNdxdugga9CpEYVaQIxOwk7GlwZWWZ19//qW4zE5bknOKeMBDYAASwnpaSHKJITRLMF9m1fp3s6g==}
 
-  fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
-
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -1628,14 +1611,6 @@ packages:
   mdn-data@2.12.2:
     resolution: {integrity: sha512-IEn+pegP1aManZuckezWCO+XZQDplx1366JoVhTpMpBB1sPey/SbveZQUosKiKiGYjg1wH4pMlNgXbCiYgihQA==}
 
-  mermaid-isomorphic@3.0.4:
-    resolution: {integrity: sha512-XQTy7H1XwHK3DPEHf+ZNWiqUEd9BwX3Xws38R9Fj2gx718srmgjlZoUzHr+Tca+O+dqJOJsAJaKzCoP65QDfDg==}
-    peerDependencies:
-      playwright: '1'
-    peerDependenciesMeta:
-      playwright:
-        optional: true
-
   mermaid@11.6.0:
     resolution: {integrity: sha512-PE8hGUy1LDlWIHWBP05SFdqUHGmRcCcK4IzpOKPE35eOw+G9zZgcnMpyunJVUEOgb//KBORPjysKndw8bFLuRg==}
 
@@ -1863,16 +1838,6 @@ packages:
   pkg-types@2.1.0:
     resolution: {integrity: sha512-wmJwA+8ihJixSoHKxZJRBQG1oY8Yr9pGLzRmSsNms0iNWyHHAlZCa7mmKiFR10YPZuz/2k169JiS/inOjBCZ2A==}
 
-  playwright-core@1.52.0:
-    resolution: {integrity: sha512-l2osTgLXSMeuLZOML9qYODUQoPPnUsKsb5/P6LJ2e6uPKXUdPK5WYhN4z03G+YNbWmGDY4YENauNu4ZKczreHg==}
-    engines: {node: '>=18'}
-    hasBin: true
-
-  playwright@1.52.0:
-    resolution: {integrity: sha512-JAwMNMBlxJ2oD1kce4KPtMkDeKGHQstdpFPcPH3maElAXon/QZeTvtsfXmTMRyO9TslfoYOXkSsvao2nE1ilTw==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   points-on-curve@0.2.0:
     resolution: {integrity: sha512-0mYKnYYe9ZcqMCWhUjItv/oHjvgEsfKvnUTg8sAtnHr3GVy7rGkXCb6d5cSyqrWqL4k81b9CPg3urd+T7aop3A==}
 
@@ -1961,15 +1926,6 @@ packages:
 
   remark-mdx@3.1.0:
     resolution: {integrity: sha512-Ngl/H3YXyBV9RcRNdlYsZujAmhsxwzxpDzpDEhFBVAGthS4GDgnctpDjgFl/ULx5UEDzqtW1cyBSNKqYYrqLBA==}
-
-  remark-mermaidjs@7.0.0:
-    resolution: {integrity: sha512-daW4LzAX1q3//SdRsTQ0ELyAXdy0yvJJQ2S0he5ddhZmnt8cyTv3QN536ezMY/OY4a3XGDMz+NU1SOSQ5xcYAA==}
-    deprecated: Use rehype-mermaid instead
-    peerDependencies:
-      playwright: '1'
-    peerDependenciesMeta:
-      playwright:
-        optional: true
 
   remark-parse@11.0.0:
     resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
@@ -2627,8 +2583,6 @@ snapshots:
   '@esbuild/win32-x64@0.25.5':
     optional: true
 
-  '@fortawesome/fontawesome-free@6.7.2': {}
-
   '@iconify/types@2.0.0': {}
 
   '@iconify/utils@2.3.0':
@@ -2775,10 +2729,6 @@ snapshots:
       langium: 3.3.1
 
   '@oslojs/encoding@1.1.0': {}
-
-  '@playwright/test@1.52.0':
-    dependencies:
-      playwright: 1.52.0
 
   '@rollup/pluginutils@5.1.4(rollup@4.41.1)':
     dependencies:
@@ -3738,9 +3688,6 @@ snapshots:
       unicode-properties: 1.4.1
       unicode-trie: 2.0.0
 
-  fsevents@2.3.2:
-    optional: true
-
   fsevents@2.3.3:
     optional: true
 
@@ -4255,15 +4202,6 @@ snapshots:
 
   mdn-data@2.12.2: {}
 
-  mermaid-isomorphic@3.0.4(playwright@1.52.0):
-    dependencies:
-      '@fortawesome/fontawesome-free': 6.7.2
-      mermaid: 11.6.0
-    optionalDependencies:
-      playwright: 1.52.0
-    transitivePeerDependencies:
-      - supports-color
-
   mermaid@11.6.0:
     dependencies:
       '@braintree/sanitize-url': 7.1.1
@@ -4676,14 +4614,6 @@ snapshots:
       exsolve: 1.0.5
       pathe: 2.0.3
 
-  playwright-core@1.52.0: {}
-
-  playwright@1.52.0:
-    dependencies:
-      playwright-core: 1.52.0
-    optionalDependencies:
-      fsevents: 2.3.2
-
   points-on-curve@0.2.0: {}
 
   points-on-path@0.2.1:
@@ -4834,19 +4764,6 @@ snapshots:
     dependencies:
       mdast-util-mdx: 3.0.0
       micromark-extension-mdxjs: 3.0.0
-    transitivePeerDependencies:
-      - supports-color
-
-  remark-mermaidjs@7.0.0(playwright@1.52.0):
-    dependencies:
-      '@types/mdast': 4.0.4
-      hast-util-from-html-isomorphic: 2.0.0
-      mermaid-isomorphic: 3.0.4(playwright@1.52.0)
-      unified: 11.0.5
-      unist-util-visit-parents: 6.0.1
-      vfile: 6.0.3
-    optionalDependencies:
-      playwright: 1.52.0
     transitivePeerDependencies:
       - supports-color
 

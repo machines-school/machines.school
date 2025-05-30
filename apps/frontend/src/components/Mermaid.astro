@@ -1,0 +1,15 @@
+<div class="mermaid" set:html={Astro.props.code}></div>
+
+<script>
+  import mermaid from 'mermaid';
+  
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'default'
+  });
+  
+  // Re-render when navigating (for view transitions)
+  document.addEventListener('astro:page-load', () => {
+    mermaid.init();
+  });
+</script>
