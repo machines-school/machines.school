@@ -9,7 +9,15 @@ const blog = defineCollection({
         featuredImage: z.object({
             url: z.string(),
             alt: z.string()
-        }).optional()
+        }).optional(),
+        author: z.string(),
+        xAccount: z.string().regex(/^@[a-zA-Z0-9_]+$/, "X account must follow @username pattern"),
+        date: z.string(),
+        tags: z.array(z.string()),
+        category: z.string(),
+        isPublished: z.boolean(),
+        isFeatured: z.boolean(),
+        isDraft: z.boolean(),
     })
  });
 

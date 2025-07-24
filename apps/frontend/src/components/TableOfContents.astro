@@ -13,7 +13,8 @@ const { headings = [] } = Astro.props;
       headings.map((heading) => (
         <li
           class={`
-            ${heading.depth === 3 ? "ml-4" : ""}
+            ${heading.depth === 2 ? "ml-2" : ""}
+            ${heading.depth === 3 ? "ml-6" : ""}
             relative pl-3
           `}
         >
@@ -58,7 +59,7 @@ const { headings = [] } = Astro.props;
   });
 
   // Track all headings that have an `id` applied
-  document.querySelectorAll('h2[id], h3[id]').forEach((heading) => {
+  document.querySelectorAll('h1[id], h2[id], h3[id], h4[id]').forEach((heading) => {
     observer.observe(heading);
   });
 </script>
