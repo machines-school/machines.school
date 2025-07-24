@@ -1,15 +1,39 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import { getCollection } from "astro:content";
+
+const articles = await getCollection("theRiseOfIntelligence");
 ---
 
 <SiteLayout title="The Rise of Intelligence">
   <main class="container mx-auto">
-    <div class="py-12 max-w-2xl">
+    <div class="py-12">
       <h1 class="text-4xl font-bold mb-4">The Rise of Intelligence</h1>
-      <p class="text-xl text-gray-500 mb-4">
+      <p class="text-xl text-gray-500 mb-12 max-w-2xl">
         จากจุดเริ่มของความคิด...สู่อนาคตของปัญญาประดิษฐ์ The Rise of
         Intelligence คือบันทึกการเดินทางของสติปัญญาแห่งมนุษยชาติ
       </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          articles.map((article) => (
+            <a href={`/the-rise-of-intelligence/${article.id}`} class="group">
+              <div class="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+                {article.data.featuredImage && (
+                  <img
+                    src={article.data.featuredImage.url}
+                    alt={article.data.featuredImage.alt}
+                    class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                )}
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold mb-2">{article.data.title}</h3>
+                  <p class="text-gray-500">{article.data.description}</p>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
     </div>
   </main>
 </SiteLayout>
