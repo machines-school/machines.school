@@ -35,20 +35,7 @@ const course = defineCollection({
     })
 });
 
-const theRiseOfIntelligence = defineCollection({
-    loader: glob({ base: './src/content/the-rise-of-intelligence', pattern: '**/*.{md,mdx}' }),
-    schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        featuredImage: z.object({
-            url: z.string(),
-            alt: z.string()
-        }).optional()
-    })
-});
-
 export const collections = {
     blog,
-    course,
-    theRiseOfIntelligence
+    course
 };
