@@ -38,8 +38,8 @@ const headings = course.body?.match(/^#{2,3}\s+(.+)$/gm)?.map((heading) => {
       )}
       <h1 class="text-4xl font-bold mb-4">{course.data.title}</h1>
       <div class="flex gap-4 mb-8">
-        <span class="px-4 py-2 bg-gray-100 rounded-full">{course.data.level}</span>
-        <span class="px-4 py-2 bg-gray-100 rounded-full">{course.data.duration}</span>
+        <span class="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">{course.data.level}</span>
+        <span class="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full">{course.data.duration}</span>
       </div>
       <p class="text-xl text-gray-500 mb-8">{course.data.description}</p>
       <div class="prose prose-lg max-w-none">

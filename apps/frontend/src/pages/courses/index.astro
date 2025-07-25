@@ -13,7 +13,7 @@ const courses = await getCollection("course");
                 {
                     courses.map((course) => (
                         <a href={`/course/${course.id}`} class="group h-full">
-                            <div class="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl flex flex-col h-full">
+                            <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl flex flex-col h-full">
                                 {course.data.featuredImage && (
                                     <img
                                         src={course.data.featuredImage.url}
@@ -23,8 +23,8 @@ const courses = await getCollection("course");
                                 )}
                                 <div class="p-6 flex-1 flex flex-col">
                                     <div class="flex gap-2 mb-3">
-                                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">{course.data.level}</span>
-                                        <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">{course.data.duration}</span>
+                                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">{course.data.level}</span>
+                                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">{course.data.duration}</span>
                                     </div>
                                     <h3 class="text-2xl font-bold mb-2">{course.data.title}</h3>
                                     <p class="text-gray-500">{course.data.description}</p>

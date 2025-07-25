@@ -17,7 +17,7 @@ const articles = await getCollection("theRiseOfIntelligence");
         {
           articles.map((article) => (
             <a href={`/the-rise-of-intelligence/${article.id}`} class="group">
-              <div class="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+              <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
                 {article.data.featuredImage && (
                   <img
                     src={article.data.featuredImage.url}

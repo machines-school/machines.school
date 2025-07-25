@@ -7,7 +7,7 @@ const { headings = [] } = Astro.props;
 ---
 
 <nav class="hidden lg:block z-10">
-  <h2 class="text-lg font-bold mb-4">Table of Contents</h2>
+  <h2 class="text-lg font-bold mb-4 text-gray-900 dark:text-gray-100">Table of Contents</h2>
   <ul class="space-y-2 text-sm" id="toc">
     {
       headings.map((heading) => (
@@ -20,7 +20,7 @@ const { headings = [] } = Astro.props;
         >
           <a
             href={`#${heading.slug}`}
-            class="block text-gray-600 hover:text-gray-900 transition-colors"
+            class="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
             data-toc-link
           >
             {heading.text}
@@ -67,6 +67,11 @@ const { headings = [] } = Astro.props;
 <style>
   .active {
     color: #111827;
+    font-weight: 600;
+  }
+  
+  :global(.dark) .active {
+    color: #f9fafb;
     font-weight: 600;
   }
 </style>

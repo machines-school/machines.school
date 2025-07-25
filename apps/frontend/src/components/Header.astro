@@ -1,7 +1,11 @@
-<header class="fixed flex top-0 left-0 right-0 bg-white border-b border-gray-200 h-16 z-50">
+---
+import ThemeIcon from './ThemeIcon.astro';
+---
+
+<header class="fixed flex top-0 left-0 right-0 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-700 h-16 z-50">
     <nav class="container mx-auto flex justify-between items-center">
         <h2 class="font-bold text-xl">
-            <a href="/" class="flex items-center gap-2">
+            <a href="/" class="flex items-center gap-2 text-gray-900 dark:text-white">
                 <svg
                     width="24"
                     height="24"
@@ -11,27 +15,27 @@
                 >
                     <path
                         d="M21 5.12402H24V13.2139H21V7.82031H18V21.3037H21V24H15V15.9102H9V24H3V21.3037H6V7.82031H3V13.2139H0V5.12402H15V2.69727H21V5.12402ZM18 2.69629H9V5.12305H3V2.42676H6V0H18V2.69629Z"
-                        fill="#12121D"></path>
+                        fill="currentColor"></path>
                 </svg>
 
                 <span>Machines School</span>
             </a>
         </h2>
-        <ul class="flex gap-4">
+        <ul class="flex items-center gap-4">
             <li>
-                <a href="/the-rise-of-intelligence" class="hover:text-gray-700">The Rise of Intelligence</a>
+                <a href="/the-rise-of-intelligence" class="text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300">The Rise of Intelligence</a>
             </li>
             <li>
-                <a href="/blog" class="hover:text-gray-700">บทความ</a>
+                <a href="/blog" class="text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300">บทความ</a>
             </li>
             <li>
-                <a href="/courses" class="hover:text-gray-700">คอร์สเรียน</a>
+                <a href="/courses" class="text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300">คอร์สเรียน</a>
             </li>
             <li>
                 <a
                     href="https://github.com/machines-school"
                     target="_blank"
-                    class="hover:text-gray-700"
+                    class="text-gray-900 dark:text-gray-100 hover:text-gray-700 dark:hover:text-gray-300"
                 >
                     <span class="sr-only"
                         >Go to Machines School's GitHub repo</span
@@ -47,6 +51,9 @@
                         ></path></svg
                     >
                 </a>
+            </li>
+            <li>
+                <ThemeIcon />
             </li>
         </ul>
     </nav>

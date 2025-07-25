@@ -1,4 +1,12 @@
-<div class="mermaid" set:html={Astro.props.code}></div>
+---
+interface Props {
+  code: string;
+}
+
+const { code } = Astro.props;
+---
+
+<div class="mermaid" set:html={code}></div>
 
 <script>
   import mermaid from 'mermaid';
@@ -10,6 +18,6 @@
   
   // Re-render when navigating (for view transitions)
   document.addEventListener('astro:page-load', () => {
-    mermaid.init();
+    mermaid.run();
   });
 </script>
