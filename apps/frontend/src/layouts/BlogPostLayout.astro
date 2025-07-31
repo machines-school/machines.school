@@ -1,8 +1,8 @@
 ---
 import "../styles/global.css";
-import type { CollectionEntry } from "astro:content";
 import Header from "../components/Header.astro";
 import TableOfContents from "../components/TableOfContents.astro";
+import Footer from "../components/Footer.astro";
 
 type Props = {
   title: string;
@@ -123,5 +123,6 @@ const {
         </aside>
       </div>
     </main>
+    <Footer />
   </body>
 </html>
