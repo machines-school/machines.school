@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import TableOfContents from "../components/TableOfContents.astro";
 import Footer from "../components/Footer.astro";
+import { Seo } from "astro-seo-meta";
 
 type Props = {
   title: string;
@@ -15,6 +16,7 @@ type Props = {
   xAccount: string;
   date: string;
   headings?: { depth: number; slug: string; text: string }[];
+  keywords?: string[];
 };
 
 const {
@@ -25,7 +27,11 @@ const {
   xAccount,
   date,
   headings = [],
+  keywords = ["blog", "machines school", "software engineering", "programming"],
 } = Astro.props;
+
+const fullTitle = `${title} | Machines School Blog`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <html lang="en">
@@ -34,8 +40,24 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <title>{title} | Machines School Blog</title>
+
+    <Seo
+      title={fullTitle}
+      description={description}
+      keywords={keywords}
+      icon="/favicon.svg"
+      facebook={{
+        image: featuredImage?.url,
+        type: "article",
+        url: canonicalUrl.toString(),
+      }}
+      twitter={{
+        card: "summary_large_image",
+        site: "@machinesschool",
+        image: featuredImage?.url,
+      }}
+    />
+    <link rel="canonical" href={canonicalUrl.toString()} />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
