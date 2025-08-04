@@ -1,12 +1,11 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
 
 const posts = await getCollection("blog");
 ---
 
-<SiteLayout title="Home">
+<SiteLayout title="Machines School">
   <main class="container mx-auto py-16">
     <div class="mb-12">
       <h1 class="text-5xl sm:text-7xl font-bold mb-4 sm:mb-2">
