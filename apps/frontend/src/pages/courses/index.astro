@@ -2,13 +2,77 @@
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { getCollection } from "astro:content";
 
-const courses = await getCollection("course");
+const allCourses = await getCollection("course");
+const selectedCategory = Astro.url.searchParams.get("category");
+
+const courses = selectedCategory
+  ? allCourses.filter((course) => course.data.category?.toLowerCase() === selectedCategory.toLowerCase())
+  : allCourses;
+
+const categories = [
+  {
+    id: "all",
+    name: "All",
+    nameEn: "All",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>'
+  },
+  {
+    id: "computer-science",
+    name: "Computer Science",
+    nameEn: "Computer Science",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>'
+  },
+  {
+    id: "ai",
+    name: "Artificial Intelligence",
+    nameEn: "AI",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>'
+  },
+  {
+    id: "electrical-engineering",
+    name: "Electrical Engineering",
+    nameEn: "Electrical Engineering",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>'
+  },
+  {
+    id: "robotics",
+    name: "Robotics",
+    nameEn: "Robotics",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>'
+  },
+];
 ---
 
 <SiteLayout title="Courses">
     <main class="container mx-auto">
         <div class="py-12">
-            <h1 class="text-4xl font-bold mb-12">Courses</h1>
+            <h1 class="text-4xl font-bold mb-8">Courses</h1>
+
+            <!-- Category Filter Tabs -->
+            <div class="flex flex-wrap gap-3 mb-12">
+                {categories.map((category) => {
+                    const isActive = category.id === "all"
+                        ? !selectedCategory
+                        : selectedCategory?.toLowerCase() === category.id;
+                    const href = category.id === "all" ? "/courses" : `/courses?category=${category.id}`;
+
+                    return (
+                        <button
+                            onclick={`window.location.href='${href}'`}
+                            class={`px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer ${
+                                isActive
+                                    ? "bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900"
+                                    : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700"
+                            }`}
+                        >
+                            <span set:html={category.icon} />
+                            <span>{category.name}</span>
+                        </button>
+                    );
+                })}
+            </div>
+
+            <!-- Courses Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {
                     courses.map((course) => (
@@ -27,13 +91,19 @@ const courses = await getCollection("course");
                                         <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">{course.data.duration}</span>
                                     </div>
                                     <h3 class="text-2xl font-bold mb-2">{course.data.title}</h3>
-                                    <p class="text-gray-500">{course.data.description}</p>
+                                    <p class="text-gray-500 dark:text-gray-400">{course.data.description}</p>
                                 </div>
                             </div>
                         </a>
                     ))
                 }
             </div>
+
+            {courses.length === 0 && (
+                <div class="text-center py-12">
+                    <p class="text-xl text-gray-500 dark:text-gray-400">ไม่พบคอร์สในหมวดหมู่นี้</p>
+                </div>
+            )}
         </div>
     </main>
 </SiteLayout>

@@ -2,13 +2,77 @@
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { getCollection } from "astro:content";
 
-const posts = await getCollection("blog");
+const allPosts = await getCollection("blog");
+const selectedCategory = Astro.url.searchParams.get("category");
+
+const posts = selectedCategory
+  ? allPosts.filter((post) => post.data.category?.toLowerCase() === selectedCategory.toLowerCase())
+  : allPosts;
+
+const categories = [
+  {
+    id: "all",
+    name: "All",
+    nameEn: "All",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>'
+  },
+  {
+    id: "computer-science",
+    name: "Computer Science",
+    nameEn: "Computer Science",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>'
+  },
+  {
+    id: "ai",
+    name: "Artificial Intelligence",
+    nameEn: "AI",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>'
+  },
+  {
+    id: "electrical-engineering",
+    name: "Electrical Engineering",
+    nameEn: "Electrical Engineering",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>'
+  },
+  {
+    id: "robotics",
+    name: "Robotics",
+    nameEn: "Robotics",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>'
+  },
+];
 ---
 
 <SiteLayout title="Blog">
   <main class="container mx-auto">
     <div class="py-12">
-      <h1 class="text-4xl font-bold mb-12">Blog</h1>
+      <h1 class="text-4xl font-bold mb-8">Blog</h1>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap gap-3 mb-12">
+        {categories.map((category) => {
+          const isActive = category.id === "all"
+            ? !selectedCategory
+            : selectedCategory?.toLowerCase() === category.id;
+          const href = category.id === "all" ? "/blog" : `/blog?category=${category.id}`;
+
+          return (
+            <a
+              href={href}
+              class={`px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 ${
+                isActive
+                  ? "bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700"
+              }`}
+            >
+              <span set:html={category.icon} />
+              <span>{category.name}</span>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- Blog Posts Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         {
           posts.map((post) => (
@@ -20,12 +84,18 @@ const posts = await getCollection("blog");
                   class="w-full h-full object-cover rounded-xl md:rounded-4xl mb-6 hover:scale-105 transition-all duration-300"
                 />
                 <h3 class="text-2xl font-bold">{post.data.title}</h3>
-                <p class="text-lg text-gray-500">{post.data.description}</p>
+                <p class="text-lg text-gray-500 dark:text-gray-400">{post.data.description}</p>
               </div>
             </a>
           ))
         }
       </div>
+
+      {posts.length === 0 && (
+        <div class="text-center py-12">
+          <p class="text-xl text-gray-500 dark:text-gray-400">ไม่พบบทความในหมวดหมู่นี้</p>
+        </div>
+      )}
     </div>
   </main>
 </SiteLayout>

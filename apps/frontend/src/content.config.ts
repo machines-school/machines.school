@@ -28,6 +28,7 @@ const course = defineCollection({
         description: z.string(),
         duration: z.string(),
         level: z.enum(['Beginner', 'Intermediate', 'Advanced']),
+        category: z.string().optional(),
         featuredImage: z.object({
             url: z.string(),
             alt: z.string()
